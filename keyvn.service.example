@@ -1,0 +1,22 @@
+[Unit]
+Description=KEYVN Node.js digital shop
+After=network.target
+
+[Service]
+Type=simple
+User=keyvn
+Group=keyvn
+WorkingDirectory=/opt/keyvn
+EnvironmentFile=/opt/keyvn/.env
+ExecStart=/usr/bin/node /opt/keyvn/src/server.js
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/keyvn/data
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
